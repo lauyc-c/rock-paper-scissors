@@ -16,7 +16,7 @@ const isValidChoice = (choice) => choice === "rock" || choice === "paper" || cho
 
 function getHumanChoice() {
   const input = prompt("Enter yout choice of rock, paper, or scissors: ") ?? "";
-  return input.toLowerCase();
+  return input;
 }
 
 const capitalize = (input) => {
@@ -33,6 +33,7 @@ const humanWins = (humanChoice, computerChoice) => {
 };
 
 function playRound(humanChoice, computerChoice) {
+  humanChoice = humanChoice.toLowerCase();
   if (!isValidChoice(humanChoice)) {
     console.log("Invalid choice!");
     return;
