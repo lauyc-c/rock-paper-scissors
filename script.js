@@ -1,5 +1,3 @@
-let humanScore = 0, computerScore = 0;
-
 function getComputerChoice() {
   const choiceNumber = Math.ceil(3 * Math.random());
   switch (choiceNumber) {
@@ -32,28 +30,49 @@ const humanWins = (humanChoice, computerChoice) => {
   );
 };
 
-function playRound(humanChoice, computerChoice) {
-  humanChoice = humanChoice.toLowerCase();
-  if (!isValidChoice(humanChoice)) {
-    console.log("Invalid choice!");
-    return;
-  }
-  const humanOutput = capitalize(humanChoice);
-  const computerOutput = capitalize(computerChoice);
-  if (humanChoice === computerChoice) {
-    console.log("It's a draw!");
-  } else if (humanWins(humanChoice, computerChoice)) {
-    console.log(`You win! ${humanOutput} beats ${computerOutput}.`);
-    humanScore++;
+function declareWinner(humanScore, computerScore) {
+  if (humanScore > computerScore) {
+    console.log("Human wins!");
+  } else if (humanScore < computerScore) {
+    console.log("Computer wins!");
   } else {
-    console.log(`You lose! ${computerOutput} beats ${humanOutput}.`);
-    computerScore++;
+    console.log("Tie!");
   }
-  console.log(`Human: ${humanScore}.\nComputer: ${computerScore}`);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+  let humanScore = 0, computerScore = 0;
 
-playRound(humanSelection, computerSelection);
+  function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+    if (!isValidChoice(humanChoice)) {
+      console.log("Invalid choice!");
+      return;
+    }
+    const humanOutput = capitalize(humanChoice);
+    const computerOutput = capitalize(computerChoice);
+    if (humanChoice === computerChoice) {
+      console.log("It's a draw!");
+    } else if (humanWins(humanChoice, computerChoice)) {
+      console.log(`You win! ${humanOutput} beats ${computerOutput}.`);
+      humanScore++;
+    } else {
+      console.log(`You lose! ${computerOutput} beats ${humanOutput}.`);
+      computerScore++;
+    }
+    console.log(`Human: ${humanScore}.\nComputer: ${computerScore}`);
+  }
 
+  for (let i = 0; i < 5; i++) {
+    console.log(`Round ${i + 1}`);
+    
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
+    playRound(humanSelection, computerSelection);
+  }
+
+  declareWinner(humanScore, computerScore);
+}
+
+playGame();
