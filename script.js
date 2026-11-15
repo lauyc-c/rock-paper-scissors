@@ -22,7 +22,7 @@ function getHumanChoice() {
 const capitalize = (input) => {
   const stringInput = String(input);
   return stringInput.charAt(0).toUpperCase() + stringInput.slice(1);
-}
+};
 
 const humanWins = (humanChoice, computerChoice) => {
   return (
@@ -42,7 +42,6 @@ function playRound(humanChoice, computerChoice) {
   const computerOutput = capitalize(computerChoice);
   if (humanChoice === computerChoice) {
     console.log("It's a draw!");
-    return;
   } else if (humanWins(humanChoice, computerChoice)) {
     console.log(`You win! ${humanOutput} beats ${computerOutput}.`);
     humanScore++;
