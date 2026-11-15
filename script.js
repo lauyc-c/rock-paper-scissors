@@ -11,3 +11,11 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice());
+
+function getHumanChoice() {
+  const input = prompt("Enter yout choice of rock, paper, or scissors: ") ?? "";
+  // The function assumes the input will always be valid for now.
+  return input.toLowerCase();
+}
+
+console.log(getHumanChoice());
