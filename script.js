@@ -1,3 +1,5 @@
+let humanScore = 0, computerScore = 0;
+
 function getComputerChoice() {
   const choiceNumber = Math.ceil(3 * Math.random());
   switch (choiceNumber) {
