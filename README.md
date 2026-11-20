@@ -1,21 +1,21 @@
 # Rock-Paper-Scissors
 
-This project allows players to play rock-paper-scissors in the web console, showcasing the basic use of JavaScript in the webpage.
+This project allows players to play rock-paper-scissors in the webpage, showcasing the basic use of JavaScript to manipulate DOM elements.
 
 [Live site](https://lauyc-c.github.io/rock-paper-scissors/)
 
 ## Project Overview
 
-The player would play rock-paper-scissors with the computer. Each round, they are given a prompt to enter their hand, which will be matched against the computer's hand. The game ends after 5 rounds are played, and the winner will be declared.
+The player would play rock-paper-scissors with the computer. Each round, they play their hand by clicking on a button, which will be matched against the computer's hand. The game ends after 5 rounds are played, and the winner will be declared.
 
 ## Technologies Used
 
-- **JavaScript**: For round resolution and tallying of scores.
+- **JavaScript**: For round resolution, tallying of scores, and UI updates.
 - **Git and GitHub**: For version control.
 
 ## Future Scope
 
-A potential enhancement to this project would be to add a user interface to input the player's hand, and display hands and scores, for a more user-friendly experience.
+A potential enhancement to this project would be to add styles to make the user interface more appealing, as it currently only consists of basic HTML and JavaScript.
 
 ## Attribution
 
