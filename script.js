@@ -30,39 +30,55 @@ const humanWins = (humanChoice, computerChoice) => {
   );
 };
 
-function declareWinner(humanScore, computerScore) {
-  if (humanScore > computerScore) {
-    console.log("Human wins!");
-  } else if (humanScore < computerScore) {
-    console.log("Computer wins!");
-  } else {
-    console.log("Tie!");
-  }
-}
-
 function playGame() {
   let humanScore = 0, computerScore = 0;
 
   const buttonGroup = document.querySelectorAll("button");
 
+  const results = document.querySelector("#results");
+
+  const scores = document.createElement("p");
+  scores.setAttribute("id", "scores");
+  scores.innerText = `Human: ${humanScore}.\nComputer: ${computerScore}.`;
+  results.appendChild(scores);
+
+  const message = document.createElement("p");
+  message.setAttribute("id", "message");
+  results.appendChild(message);
+
   function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
     if (!isValidChoice(humanChoice)) {
       console.log("Invalid choice!");
+      message.innerText = "Invalid choice!"
       return;
     }
     const humanOutput = capitalize(humanChoice);
     const computerOutput = capitalize(computerChoice);
     if (humanChoice === computerChoice) {
-      console.log("It's a draw!");
+      message.innerText = "It's a draw!";
     } else if (humanWins(humanChoice, computerChoice)) {
-      console.log(`You win! ${humanOutput} beats ${computerOutput}.`);
+      message.innerText = `You win! ${humanOutput} beats ${computerOutput}.`;
       humanScore++;
     } else {
-      console.log(`You lose! ${computerOutput} beats ${humanOutput}.`);
+      message.innerText = `You lose! ${computerOutput} beats ${humanOutput}.`;
       computerScore++;
     }
-    console.log(`Human: ${humanScore}.\nComputer: ${computerScore}`);
+    scores.innerText = `Human: ${humanScore}.\nComputer: ${computerScore}.`;
+  }
+
+  function declareWinner(humanScore, computerScore) {
+    const finalResult = document.createElement("p");
+
+    if (humanScore > computerScore) {
+      finalResult.innerText = "Human wins!";
+    } else if (humanScore < computerScore) {
+      finalResult.innerText = "Computer wins!";
+    } else {
+      finalResult.innerText = "Tie!";
+    }
+
+    results.appendChild(finalResult);
   }
 
   buttonGroup.forEach((button) => {
