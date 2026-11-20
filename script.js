@@ -32,8 +32,12 @@ const humanWins = (humanChoice, computerChoice) => {
 
 function playGame() {
   let humanScore = 0, computerScore = 0;
+  let round = 1;
 
   const buttonGroup = document.querySelectorAll("button");
+
+  const roundDisplay = document.querySelector("#round-display");
+  roundDisplay.textContent = `Round ${round}`;
 
   const results = document.querySelector("#results");
 
@@ -65,6 +69,8 @@ function playGame() {
       computerScore++;
     }
     scores.innerText = `Human: ${humanScore}.\nComputer: ${computerScore}.`;
+    round++;
+    roundDisplay.textContent = `Round ${round}`;
   }
 
   function declareWinner(humanScore, computerScore) {
@@ -84,11 +90,17 @@ function playGame() {
   buttonGroup.forEach((button) => {
     const playerSelection = button.id;
     button.addEventListener("click", () => {
-      playRound(playerSelection, getComputerChoice())
+      playRound(playerSelection, getComputerChoice());
+
+      if (round > 5) {
+        roundDisplay.textContent = "Game Over";
+        declareWinner(humanScore, computerScore);
+        buttonGroup.forEach((button) => {
+          button.setAttribute("disabled", true);
+        });
+      }
     });
   });
-
-  declareWinner(humanScore, computerScore);
 }
 
 playGame();
